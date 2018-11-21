@@ -48,4 +48,13 @@ constructor(props) {
 ```
 8. Note: "In JavaScript classes, you need to always call super when defining the constructor of a subclass. All React component classes that have a constructor should start it with a super(props) call."
 9. "To collect data from multiple children, or to have two child components communicate with each other, you need to declare the shared state in their parent component instead. The parent component can pass the state back down to the children by using props; this keeps the child components in sync with each other and with the parent component."
-10. 
+10. Benefits of immutability
+  1.  "It makes (certain) complex features much easier to implement"
+  2.  Detecting changes is easier, as you just compare the latest immutable object to the previous one(s)
+  3.  Main benefit: helps to build *pure components*. React can then determine when to re-render, based on whether there has been a change (see previous point).
+    1.  See [here](https://reactjs.org/docs/optimizing-performance.html#examples) to read more about pure components and `shouldComponentUpdate()`
+11. (Warning) Each child in an array or iterator should have a unique “key” prop.
+  1.  When rendering a list, React stores info about each rendered list item so that it can determine what has changed in an update.
+  2.  `key` is a special, reserved property in React (like `ref`, a more advanced feature that I'll get on to in Stephen Grider's tuts!)
+  3.  Keys are not passed as props. A component cannot enquire about its key. React automatically uses them to decide which components to update.
+  4.  Keys do not need to be globally unique. They just need to be unique between components and their siblings.
